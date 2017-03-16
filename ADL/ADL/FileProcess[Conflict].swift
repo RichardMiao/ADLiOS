@@ -102,24 +102,17 @@ class FileProcess {
     }
     
     func readFile(fileName:String, folder:String) -> String? {
-        let fileDir = try! FileManager.default.url(for:.cachesDirectory, in:.userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folder, isDirectory:true).appendingPathComponent(fileName, isDirectory:false)
-        var res:String? = nil
+        let fileDir = try! FileManager.default.url(for:.cachesDirectory, in:.userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folder, isDirectory:true).appendingPathComponent(fileName, isDirectory: false)
+            
         if !FileManager.default.fileExists(atPath: fileDir.path) {
-            return res
+            return nil
         } else {
-            do {
-                let str = try String(contentsOf: fileDir, encoding:String.Encoding.utf8).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-                if str.isEmpty {
-                    return res
-                }
-                res = str
+            do  {let text = try String(contentsOf: fileDir, encoding: .utf8)
             } catch let error as NSError {
                 print(error)
             }
         }
-        print("-------\n")
-        print(res!)
-        return res
+        return text?
     }
     
 }

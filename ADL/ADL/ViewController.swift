@@ -18,11 +18,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let fileProcess = FileProcess()
     let motionData = MotionData()
+    var isLogin = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.compassIcon.image = UIImage(named:"compass.png")
-        self.fileProcess.getFileList(folder: "record")
+//        self.fileProcess.getFileList(folder: "record")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.isLogin = self.checkLogin()
+        if isLogin == false {
+            self.performSegue(withIdentifier: "loginView", sender: self)
+        }
     }
     
     //main button
@@ -161,6 +169,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         dateFormatter.dateFormat = "yyyyMMdd_HH:mm:ss"
         let dateString = dateFormatter.string(from: date)
         return dateString
+    }
+    
+    func checkLogin() -> Bool {
+        if self.fileProcess.checkLoginFile() == false {
+            return false
+        } else {
+            let userStr = self.fileProcess.readFile(fileName: "user", folder: "login")
+            if userStr == nil {
+                return false
+            } else {
+                print("success")
+            }
+        }
+        return true
     }
 
 

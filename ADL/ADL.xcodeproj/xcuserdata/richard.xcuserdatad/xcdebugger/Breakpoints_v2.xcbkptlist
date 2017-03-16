@@ -105,12 +105,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADL/ViewController.swift"
-            timestampString = "511236703.634867"
+            timestampString = "511303687.554983"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ADL/FileProcess.swift"
+            timestampString = "511303687.554983"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "checkLoginFile()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
