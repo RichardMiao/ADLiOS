@@ -70,11 +70,28 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjX-2v-yg4">
+                                <rect key="frame" x="12" y="321" width="71" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rz-Oe-51v">
+                                <rect key="frame" x="82" y="318" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="kQc-c0-k6V"/>
+                                </constraints>
+                                <state key="normal" title="Default"/>
+                                <connections>
+                                    <segue destination="3zv-nR-Oiu" kind="showDetail" identifier="showOption" id="itp-Ha-uD4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Ohz-Rh-Xqo" firstAttribute="top" secondItem="ALN-YI-Wdb" secondAttribute="bottom" constant="25" id="3Fq-fk-wDE"/>
                             <constraint firstItem="Zwg-wl-yxu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="DBx-Jb-4Ca"/>
+                            <constraint firstItem="Zwg-wl-yxu" firstAttribute="top" secondItem="bjX-2v-yg4" secondAttribute="bottom" constant="30" id="Edo-pQ-OAv"/>
                             <constraint firstItem="jlp-JA-rLe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FZR-Kj-qfe"/>
                             <constraint firstItem="Ohz-Rh-Xqo" firstAttribute="leading" secondItem="AH2-US-SuV" secondAttribute="trailing" constant="3" id="GI1-Zb-ch4"/>
                             <constraint firstItem="AH2-US-SuV" firstAttribute="top" secondItem="bPg-4m-yah" secondAttribute="bottom" constant="40" id="O6m-Wk-er5"/>
@@ -82,9 +99,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ohz-Rh-Xqo" secondAttribute="trailing" constant="9" id="Sv0-20-RPo"/>
                             <constraint firstItem="Zwg-wl-yxu" firstAttribute="top" secondItem="AH2-US-SuV" secondAttribute="bottom" constant="50" id="Td0-yK-mrg"/>
                             <constraint firstItem="ALN-YI-Wdb" firstAttribute="leading" secondItem="bPg-4m-yah" secondAttribute="trailing" constant="5" id="UoL-G6-85Y"/>
+                            <constraint firstItem="bjX-2v-yg4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="dSS-TG-cKZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zwg-wl-yxu" secondAttribute="trailing" constant="-20" id="fFh-uq-jY2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Zwg-wl-yxu" secondAttribute="bottom" id="fdh-LV-veP"/>
+                            <constraint firstItem="2rz-Oe-51v" firstAttribute="leading" secondItem="bjX-2v-yg4" secondAttribute="trailing" constant="13" id="mJW-Nf-n3s"/>
                             <constraint firstItem="Zwg-wl-yxu" firstAttribute="top" secondItem="Ohz-Rh-Xqo" secondAttribute="bottom" constant="50" id="rKK-XK-XiD"/>
+                            <constraint firstItem="Zwg-wl-yxu" firstAttribute="top" secondItem="2rz-Oe-51v" secondAttribute="bottom" constant="25" id="so0-84-7ol"/>
                             <constraint firstItem="jlp-JA-rLe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="xYV-Ws-9Oh"/>
                         </constraints>
                         <variation key="default">
@@ -96,6 +116,7 @@
                     <navigationItem key="navigationItem" id="pYG-Vb-fWI"/>
                     <connections>
                         <outlet property="compassIcon" destination="jlp-JA-rLe" id="ijs-BO-BNN"/>
+                        <outlet property="locationLabel" destination="2rz-Oe-51v" id="Jfh-fZ-sBP"/>
                         <segue destination="fJT-sd-NPT" kind="presentation" identifier="loginView" id="3k3-7o-t6f"/>
                     </connections>
                 </viewController>
@@ -253,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aen-qm-Vtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1967.2" y="103.89805097451276"/>
+            <point key="canvasLocation" x="1078" y="864"/>
         </scene>
         <!--Situation View Controller-->
         <scene sceneID="dCX-SI-mC2">
@@ -267,245 +288,399 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfd-PA-d7C">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0a5-tv-Qz9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fIH-nD-Rpi">
-                                        <rect key="frame" x="0.0" y="8" width="375" height="659"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BWI-nZ-61O">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO2-Yf-aW9">
-                                                <rect key="frame" x="8" y="18" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477791005719" green="0.60053136982215904" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UlW-ik-6yQ">
+                                                <rect key="frame" x="10" y="8" width="355" height="600"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IEM-Z3-tVs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="66.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXc-0q-37o">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66.5"/>
+                                                                <state key="normal" title="&lt;back"/>
+                                                                <connections>
+                                                                    <action selector="backButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="rq0-PE-tzJ"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LUJ-Lg-zkK">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890173119503" green="0.57466642121337908" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="BWASHING">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="r1w-1h-2BB"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="weT-vQ-45L">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="KWASHING">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="9O4-mW-ZeC"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gt2-4G-BJy">
+                                                        <rect key="frame" x="0.0" y="76.5" width="355" height="66"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BuS-C4-ZJE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="ULIVINGROOM">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="Bw2-oy-Csg"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-Sx-kG8">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="DLIVINGROOM">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="aeT-Jf-fKW"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="N4q-DX-Vhu">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="UBATHROOM">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="yJI-hY-tDD"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="07K-Ve-lZl">
+                                                        <rect key="frame" x="0.0" y="152.5" width="355" height="66.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pOU-0x-r1p">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="DBATHROOM">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="9MK-8s-uOV"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nkM-n0-VqR">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="LAUNDRYROOM">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="boT-sw-5Gm"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bLk-jQ-9Nz">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="BED">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="TFK-NV-Wz6"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pD1-C4-c6M">
+                                                        <rect key="frame" x="0.0" y="229" width="355" height="66"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Xw6-UH-TtA">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="WORKINGONPC">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="5Dc-QC-1Fc"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="8Ne-z4-Ujg">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <state key="normal" title="TREADMILLHOME">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="7w4-xA-JQO"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6aH-GN-o1l">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="EXERCISEHOME">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="Izo-3U-g5O"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gOV-f6-6gx">
+                                                        <rect key="frame" x="0.0" y="305" width="355" height="66.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HFb-BA-jac">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                <state key="normal" title="BREAKFASTHOME">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="5Nq-xC-g0V"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6gJ-gs-GMC">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="LUNCHHOME">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="R2g-jD-dUJ"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fdZ-pu-emb">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="DINNERHOME">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="v5o-UX-tak"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hcq-Cq-smS">
+                                                        <rect key="frame" x="0.0" y="381.5" width="355" height="66"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hWL-2i-5dJ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="GETTINGUP">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="upa-Ew-MaJ"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="AKh-C4-WMG">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="NAP">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="yDJ-ff-uZV"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="uNj-ZY-LIq">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="SLEEP">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="Pc6-Tf-WTd"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hpm-f7-7Gs">
+                                                        <rect key="frame" x="0.0" y="457.5" width="355" height="66.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HB9-iV-1pf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="SHOWER">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="mAP-WV-25K"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="F7d-ML-y9z">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="WAITINGBUS">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="gR0-Vg-CAf"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NFF-Zg-Puv">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66.5"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="BUS">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="d7Z-iz-RGC"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P6X-ix-RgF">
+                                                        <rect key="frame" x="0.0" y="534" width="355" height="66"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hwC-FG-e8p">
+                                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="DRIVING">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="Vvf-uD-kPo"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zVQ-KT-ahn">
+                                                                <rect key="frame" x="121.5" y="0.0" width="112" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="INCLASS">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="jGy-0l-oAb"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lEW-gm-HFi">
+                                                                <rect key="frame" x="243.5" y="0.0" width="111.5" height="66"/>
+                                                                <color key="backgroundColor" red="0.15040890169999999" green="0.5746664212" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <state key="normal" title="RESTAURANT">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="optionButton:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="wlo-U3-jqs"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="600" id="rxG-Ls-QbA"/>
+                                                </constraints>
+                                            </stackView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="35V-J6-jpp">
+                                                <rect key="frame" x="88" y="616" width="97" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Y3K-pL-zpw"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlT-K8-37V">
+                                                <rect key="frame" x="192" y="616" width="49" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="Mvl-In-PCj"/>
+                                                </constraints>
+                                                <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="OhterLabelSubmit:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="Sg7-dh-B3k"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQf-0x-rBT">
-                                                <rect key="frame" x="110" y="18" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="BWASHING">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRH-hz-xao">
-                                                <rect key="frame" x="213" y="18" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="KWASHING">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-lg-Fdu">
-                                                <rect key="frame" x="-1" y="65" width="104" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="ULIVINGROOM">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVm-NF-Ixt">
-                                                <rect key="frame" x="101" y="65" width="104" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="DLIVINGROOM">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydt-Ro-Hb8">
-                                                <rect key="frame" x="209" y="65" width="95" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="UBATHROOM">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbx-7w-Ipq">
-                                                <rect key="frame" x="4" y="112" width="95" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="DBATHROOM">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNZ-Il-okr">
-                                                <rect key="frame" x="96" y="112" width="115" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="LAUNDRYROOM">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-Wj-XD7">
-                                                <rect key="frame" x="213" y="112" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="BED">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7Z-xk-Wxl">
-                                                <rect key="frame" x="-5" y="159" width="113" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="WORKINGONPC">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhz-Ii-fUC">
-                                                <rect key="frame" x="90" y="159" width="126" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="TREADMILLHOME">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4V-VO-a0R">
-                                                <rect key="frame" x="199" y="159" width="114" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="EXERCISEHOME">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iem-wT-wQu">
-                                                <rect key="frame" x="-13" y="206" width="128" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="BREAKFASTHOME">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPd-RC-51J">
-                                                <rect key="frame" x="106" y="206" width="95" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="LUNCHHOME">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujs-6u-Vk6">
-                                                <rect key="frame" x="207" y="206" width="99" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="DINNERHOME">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n01-NC-2bS">
-                                                <rect key="frame" x="8" y="253" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="GETTINGUP">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lai-vd-jnl">
-                                                <rect key="frame" x="110" y="253" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="NAP">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0Y-mk-hnL">
-                                                <rect key="frame" x="213" y="253" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="SLEEP">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6k-TM-bMW">
-                                                <rect key="frame" x="8" y="300" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="SHOWER">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGF-I2-YHs">
-                                                <rect key="frame" x="107" y="300" width="92" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="WAITINGBUS">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVN-Xu-E74">
-                                                <rect key="frame" x="213" y="300" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="BUS">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIS-9d-ygf">
-                                                <rect key="frame" x="8" y="347" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="DRIVING">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEs-ht-8cd">
-                                                <rect key="frame" x="110" y="347" width="86" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="INCLASS">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBt-on-cuQ">
-                                                <rect key="frame" x="208" y="347" width="96" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.34484477790000001" green="0.60053136979999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="RESTAURANT">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Other:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71X-u2-8yh">
+                                                <rect key="frame" x="38" y="619" width="49" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="UlW-ik-6yQ" secondAttribute="trailing" constant="10" id="HXJ-GL-Zfh"/>
+                                            <constraint firstItem="UlW-ik-6yQ" firstAttribute="leading" secondItem="BWI-nZ-61O" secondAttribute="leading" constant="10" id="LZW-6Y-K2c"/>
+                                            <constraint firstItem="UlW-ik-6yQ" firstAttribute="top" secondItem="BWI-nZ-61O" secondAttribute="top" constant="30" id="P34-5C-TiV"/>
+                                            <constraint firstItem="vlT-K8-37V" firstAttribute="top" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="20" id="X0m-nh-E8a"/>
+                                            <constraint firstItem="35V-J6-jpp" firstAttribute="leading" secondItem="71X-u2-8yh" secondAttribute="trailing" constant="10" id="fsD-2k-I32"/>
+                                            <constraint firstItem="35V-J6-jpp" firstAttribute="top" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="20" id="jf1-fu-jTv"/>
+                                            <constraint firstItem="71X-u2-8yh" firstAttribute="leading" secondItem="BWI-nZ-61O" secondAttribute="leading" constant="10" id="p3w-BS-0hS"/>
+                                            <constraint firstAttribute="bottom" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="100" id="uie-mP-jZa"/>
+                                            <constraint firstItem="71X-u2-8yh" firstAttribute="top" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="20" id="zch-fd-94P"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="fIH-nD-Rpi" secondAttribute="trailing" id="05D-5j-DwM"/>
-                                    <constraint firstAttribute="bottom" secondItem="fIH-nD-Rpi" secondAttribute="bottom" id="5q9-Ug-7hQ"/>
-                                    <constraint firstItem="fIH-nD-Rpi" firstAttribute="leading" secondItem="Zfd-PA-d7C" secondAttribute="leading" id="Esd-I5-CWl"/>
-                                    <constraint firstItem="fIH-nD-Rpi" firstAttribute="top" secondItem="Zfd-PA-d7C" secondAttribute="top" id="OBi-FR-TqB"/>
+                                    <constraint firstItem="BWI-nZ-61O" firstAttribute="top" secondItem="0a5-tv-Qz9" secondAttribute="top" id="02i-0F-WA4"/>
+                                    <constraint firstAttribute="bottom" secondItem="BWI-nZ-61O" secondAttribute="bottom" id="PQB-VM-sXq"/>
+                                    <constraint firstItem="BWI-nZ-61O" firstAttribute="leading" secondItem="0a5-tv-Qz9" secondAttribute="leading" id="a2q-Uj-e0q"/>
+                                    <constraint firstAttribute="trailing" secondItem="BWI-nZ-61O" secondAttribute="trailing" id="na2-lN-7VV"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zfd-PA-d7C" firstAttribute="leading" secondItem="Ukn-51-g5f" secondAttribute="leading" id="0VK-gu-sr8"/>
-                            <constraint firstItem="fIH-nD-Rpi" firstAttribute="width" secondItem="Ukn-51-g5f" secondAttribute="width" id="70Z-uT-ELu"/>
-                            <constraint firstItem="Zfd-PA-d7C" firstAttribute="top" secondItem="Ukn-51-g5f" secondAttribute="top" id="Y3k-bh-DOk"/>
-                            <constraint firstAttribute="trailing" secondItem="Zfd-PA-d7C" secondAttribute="trailing" id="xao-Qi-NdN"/>
-                            <constraint firstItem="eBe-kj-UPC" firstAttribute="top" secondItem="Zfd-PA-d7C" secondAttribute="bottom" id="zZs-xj-7lC"/>
+                            <constraint firstItem="0a5-tv-Qz9" firstAttribute="leading" secondItem="Ukn-51-g5f" secondAttribute="leading" id="1VH-x0-dm5"/>
+                            <constraint firstAttribute="trailing" secondItem="0a5-tv-Qz9" secondAttribute="trailing" id="JW3-cg-jVP"/>
+                            <constraint firstItem="0a5-tv-Qz9" firstAttribute="top" secondItem="Ukn-51-g5f" secondAttribute="top" id="ae9-0u-xKF"/>
+                            <constraint firstItem="BWI-nZ-61O" firstAttribute="width" secondItem="Ukn-51-g5f" secondAttribute="width" id="fUD-oC-dEo"/>
+                            <constraint firstItem="eBe-kj-UPC" firstAttribute="top" secondItem="0a5-tv-Qz9" secondAttribute="bottom" id="v6N-id-0sb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="otherLabel" destination="35V-J6-jpp" id="Rhp-eF-i9O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQJ-IX-xMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2765.5999999999999" y="103.89805097451276"/>
+            <point key="canvasLocation" x="1996" y="-38.23088455772114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Mp-80-rFW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UFW-e6-Ly9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="UFW-e6-Ly9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IRf-fp-8g6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Gql-wW-iSS">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="oqV-6T-OoP"/>
                     </connections>

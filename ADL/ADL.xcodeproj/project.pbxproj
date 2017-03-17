@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7928E4B61E7A46C000507E32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7928E4B51E7A46C000507E32 /* Assets.xcassets */; };
 		792C39681E79CDD500463A69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C39671E79CDD500463A69 /* LoginViewController.swift */; };
 		792C396A1E7A064F00463A69 /* SituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C39691E7A064F00463A69 /* SituationViewController.swift */; };
 		794564FE1DAC340D004E938B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794564FD1DAC340D004E938B /* AppDelegate.swift */; };
 		794565001DAC340D004E938B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794564FF1DAC340D004E938B /* ViewController.swift */; };
 		794565031DAC340D004E938B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794565011DAC340D004E938B /* Main.storyboard */; };
-		794565051DAC340E004E938B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 794565041DAC340E004E938B /* Assets.xcassets */; };
 		794565081DAC340E004E938B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794565061DAC340E004E938B /* LaunchScreen.storyboard */; };
 		794565131DAC340E004E938B /* ADLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794565121DAC340E004E938B /* ADLTests.swift */; };
 		7945651E1DAC340E004E938B /* ADLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7945651D1DAC340E004E938B /* ADLUITests.swift */; };
@@ -41,13 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7928E4B51E7A46C000507E32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		792C39671E79CDD500463A69 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		792C39691E7A064F00463A69 /* SituationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationViewController.swift; sourceTree = "<group>"; };
 		794564FA1DAC340D004E938B /* ADL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		794564FD1DAC340D004E938B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		794564FF1DAC340D004E938B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		794565021DAC340D004E938B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		794565041DAC340E004E938B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		794565071DAC340E004E938B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		794565091DAC340E004E938B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7945650E1DAC340E004E938B /* ADLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,8 +147,8 @@
 		7945652B1DAC3B73004E938B /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				7928E4B51E7A46C000507E32 /* Assets.xcassets */,
 				794564FD1DAC340D004E938B /* AppDelegate.swift */,
-				794565041DAC340E004E938B /* Assets.xcassets */,
 				794565061DAC340E004E938B /* LaunchScreen.storyboard */,
 				794565091DAC340E004E938B /* Info.plist */,
 			);
@@ -279,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				794565081DAC340E004E938B /* LaunchScreen.storyboard in Resources */,
-				794565051DAC340E004E938B /* Assets.xcassets in Resources */,
+				7928E4B61E7A46C000507E32 /* Assets.xcassets in Resources */,
 				794565031DAC340D004E938B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

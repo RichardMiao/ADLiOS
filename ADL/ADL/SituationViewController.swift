@@ -8,9 +8,15 @@
 
 import UIKit
 
-class SituationViewController: UIViewController {
+protocol SituationLabelDelagate {
+    func situationLabel(label:String?)
+}
 
+class SituationViewController: UIViewController {
     
+    @IBOutlet weak var otherLabel: UITextField!
+    var delegate:SituationLabelDelagate? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,11 +28,32 @@ class SituationViewController: UIViewController {
     }
     
 
-    @IBAction func SituButton(_ sender: UIButton) {
-        print("the button clicked");
+    @IBAction func optionButton(_ sender: UIButton) {
+        print("button****")
+        let optionContent = sender.currentTitle
+        print(optionContent)
+        if delegate != nil {
+            print("the delegate is not null")
+            delegate!.situationLabel(label: optionContent)
+            self.dismiss(animated: true, completion: nil)
+        }
+    
     }
-
-    /*
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func OhterLabelSubmit(_ sender: UIButton) {
+        print("other text")
+        let otherlabelContent = otherLabel.text
+        if delegate != nil {
+            print("the delegate is not null")
+            delegate!.situationLabel(label: otherlabelContent)
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+       /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -13,8 +13,12 @@ import Foundation
 import SystemConfiguration.CaptiveNetwork
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabelDelagate {
     @IBOutlet weak var compassIcon: UIImageView!
+    
+    
+    @IBOutlet weak var locationLabel: UIButton!
+    
     let locationManager = CLLocationManager()
     let fileProcess = FileProcess()
     let motionData = MotionData()
@@ -184,7 +188,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         return true
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showOption" {
+            print("the delegate set")
+            let optionViewController:SituationViewController = segue.destination as! SituationViewController
+            optionViewController.delegate = self
+        }
+    }
+    
+    func situationLabel(label:String?) -> Void {
+        if label != nil {
+            print("set location label")
+            print(label)
+            self.locationLabel.setTitle(label, for: .normal)
+        }
+    }
 
 }
 

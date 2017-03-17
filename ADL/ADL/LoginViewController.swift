@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
         }
         let userInputString = userName!+"\n"+userEmail!+"@iastate.edu"
         fileProcess.wirteFileWithCoverUp(content: userInputString, fileName: "user", folder: "login")
+        self.dismiss(animated: true, completion: nil)
     }
 
     /*
