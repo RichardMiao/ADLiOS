@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADL/ViewController.swift"
-            timestampString = "511396847.721641"
+            timestampString = "511733154.435605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -121,12 +121,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADL/FileProcess.swift"
-            timestampString = "511303687.554983"
+            timestampString = "511557207.988048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "checkLoginFile()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ADL/AudioRecording.swift"
+            timestampString = "511561588.340233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "setupRecorder(fileName:delegate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

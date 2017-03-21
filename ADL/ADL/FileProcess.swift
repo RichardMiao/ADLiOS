@@ -44,12 +44,6 @@ class FileProcess {
             self.createFile(fileName: fileName, folder:folder)
         }
         print(path)
-        //        do {
-        //            print(content)
-        //            try content.write(toFile: path, atomically: true, encoding: String.Encoding.utf8)
-        //        } catch let error as NSError {
-        //            print(error.localizedDescription)
-        //        }
         
         if let fileHandle = FileHandle(forWritingAtPath: path) {
             fileHandle.seekToEndOfFile()
@@ -120,6 +114,15 @@ class FileProcess {
         print("-------\n")
         print(res!)
         return res
+    }
+    
+    func checkDir(folder:String) -> Bool {
+        let dir = try! FileManager.default.url(for:.cachesDirectory, in:.userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folder, isDirectory:true)
+        if !FileManager.default.fileExists(atPath: dir.path) {
+            return false
+        } else {
+            return true
+        }
     }
     
 }

@@ -47,5 +47,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>The audio file in this app is securely and anymously stored </string>
 </dict>
 </plist>

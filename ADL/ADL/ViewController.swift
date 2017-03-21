@@ -11,9 +11,9 @@ import CoreLocation
 import CoreMotion
 import Foundation
 import SystemConfiguration.CaptiveNetwork
+import AVFoundation
 
-
-class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabelDelagate {
+class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabelDelagate, AVAudioRecorderDelegate {
     @IBOutlet weak var compassIcon: UIImageView!
     
     
@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
     let locationManager = CLLocationManager()
     let fileProcess = FileProcess()
     let motionData = MotionData()
+    let audioRecorder = AudioRecording()
     var isLogin = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
     }
     
     func startRecording() {
+        
+        //audio
+        let fileName = self.fileProcess.getFileName()+"m4a"
+        let setupRes = self.audioRecorder.setupRecorder(fileName: fileName,delegate: self)
+        if setupRes == true {
+            self.audioRecorder.startRecording()
+        }
+        
         // Motion DATA
         self.motionData.getAccData(interval: 0.5)
         self.motionData.getGyroData(interval: 0.5)

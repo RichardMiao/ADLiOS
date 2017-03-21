@@ -602,43 +602,13 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="600" id="rxG-Ls-QbA"/>
                                                 </constraints>
                                             </stackView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="35V-J6-jpp">
-                                                <rect key="frame" x="88" y="616" width="97" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Y3K-pL-zpw"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlT-K8-37V">
-                                                <rect key="frame" x="192" y="616" width="49" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="Mvl-In-PCj"/>
-                                                </constraints>
-                                                <state key="normal" title="Submit"/>
-                                                <connections>
-                                                    <action selector="OhterLabelSubmit:" destination="3zv-nR-Oiu" eventType="touchUpInside" id="Sg7-dh-B3k"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Other:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71X-u2-8yh">
-                                                <rect key="frame" x="38" y="619" width="49" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="UlW-ik-6yQ" secondAttribute="trailing" constant="10" id="HXJ-GL-Zfh"/>
                                             <constraint firstItem="UlW-ik-6yQ" firstAttribute="leading" secondItem="BWI-nZ-61O" secondAttribute="leading" constant="10" id="LZW-6Y-K2c"/>
                                             <constraint firstItem="UlW-ik-6yQ" firstAttribute="top" secondItem="BWI-nZ-61O" secondAttribute="top" constant="30" id="P34-5C-TiV"/>
-                                            <constraint firstItem="vlT-K8-37V" firstAttribute="top" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="20" id="X0m-nh-E8a"/>
-                                            <constraint firstItem="35V-J6-jpp" firstAttribute="leading" secondItem="71X-u2-8yh" secondAttribute="trailing" constant="10" id="fsD-2k-I32"/>
-                                            <constraint firstItem="35V-J6-jpp" firstAttribute="top" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="20" id="jf1-fu-jTv"/>
-                                            <constraint firstItem="71X-u2-8yh" firstAttribute="leading" secondItem="BWI-nZ-61O" secondAttribute="leading" constant="10" id="p3w-BS-0hS"/>
                                             <constraint firstAttribute="bottom" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="100" id="uie-mP-jZa"/>
-                                            <constraint firstItem="71X-u2-8yh" firstAttribute="top" secondItem="UlW-ik-6yQ" secondAttribute="bottom" constant="20" id="zch-fd-94P"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -659,9 +629,6 @@
                             <constraint firstItem="eBe-kj-UPC" firstAttribute="top" secondItem="0a5-tv-Qz9" secondAttribute="bottom" id="v6N-id-0sb"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="otherLabel" destination="35V-J6-jpp" id="Rhp-eF-i9O"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQJ-IX-xMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

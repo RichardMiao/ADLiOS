@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7928E4B61E7A46C000507E32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7928E4B51E7A46C000507E32 /* Assets.xcassets */; };
+		7928E4B81E7C72A700507E32 /* AudioRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7928E4B71E7C72A700507E32 /* AudioRecording.swift */; };
 		792C39681E79CDD500463A69 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C39671E79CDD500463A69 /* LoginViewController.swift */; };
 		792C396A1E7A064F00463A69 /* SituationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792C39691E7A064F00463A69 /* SituationViewController.swift */; };
 		794564FE1DAC340D004E938B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794564FD1DAC340D004E938B /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		7928E4B51E7A46C000507E32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7928E4B71E7C72A700507E32 /* AudioRecording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecording.swift; sourceTree = "<group>"; };
 		792C39671E79CDD500463A69 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		792C39691E7A064F00463A69 /* SituationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationViewController.swift; sourceTree = "<group>"; };
 		794564FA1DAC340D004E938B /* ADL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				79569EF61E622F3800F73002 /* FileProcess.swift */,
 				792C39671E79CDD500463A69 /* LoginViewController.swift */,
 				792C39691E7A064F00463A69 /* SituationViewController.swift */,
+				7928E4B71E7C72A700507E32 /* AudioRecording.swift */,
 			);
 			path = ADL;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				792C39681E79CDD500463A69 /* LoginViewController.swift in Sources */,
 				79B23E131E4D53CA0067BCC0 /* FileMag.swift in Sources */,
 				79569EF71E622F3800F73002 /* FileProcess.swift in Sources */,
+				7928E4B81E7C72A700507E32 /* AudioRecording.swift in Sources */,
 				79E4681C1DC00439004E8835 /* LocationData.swift in Sources */,
 				794565001DAC340D004E938B /* ViewController.swift in Sources */,
 				794564FE1DAC340D004E938B /* AppDelegate.swift in Sources */,
