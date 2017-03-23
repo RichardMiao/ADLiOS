@@ -1,2 +1,2 @@
 # ADLiOS
-ISU smart house lab ADL data collector in iOS platform
+Smart house lab ADL data collector in iOS platform
