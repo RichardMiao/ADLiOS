@@ -12,7 +12,7 @@ import AVFoundation
 class AudioRecording {
     var soundRecorder: AVAudioRecorder?
     var audioSession: AVAudioSession!
-    var seconds:Double = 10
+    var seconds:Double = 15
     let fileProcess = FileProcess()
     
     func setRecordTimeLength(seconds:Double) -> Bool {
@@ -74,6 +74,10 @@ class AudioRecording {
     
     func startRecording() {
         self.soundRecorder?.record(forDuration: self.seconds)
+    }
+    
+    func stopRecording() {
+        self.soundRecorder?.stop()
     }
     
     

@@ -15,8 +15,6 @@ import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabelDelagate, AVAudioRecorderDelegate {
     @IBOutlet weak var compassIcon: UIImageView!
-    
-    
     @IBOutlet weak var locationLabel: UIButton!
     
     let locationManager = CLLocationManager()
@@ -24,6 +22,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
     let motionData = MotionData()
     let audioRecorder = AudioRecording()
     var isLogin = false
+    var locations:[CLLocation] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -55,18 +55,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
     }
     
     func startRecording() {
-        
-        //audio
-        let fileName = self.fileProcess.getFileName()+"m4a"
+        /////////////////
+        //audio  ////////
+        ////////////////
+        self.fileProcess.generateFileName(fileType:.audio)
+        let fileName = self.fileProcess.getFileName(fileType:.audio)
         let setupRes = self.audioRecorder.setupRecorder(fileName: fileName,delegate: self)
         if setupRes == true {
             self.audioRecorder.startRecording()
-        }
         
+        }
+
         // Motion DATA
-        self.motionData.getAccData(interval: 0.5)
-        self.motionData.getGyroData(interval: 0.5)
-        self.motionData.getMagData(interval: 0.5)
+        self.motionData.generateMotionData(interval: 0.5)
         
         // COMPASS DATA
         self.locationManager.requestAlwaysAuthorization()
@@ -77,24 +78,82 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
         
         //Battery Monitor
         let battery_status = getBattery()
-        let cur_time = getDateHour()
-        let file = self.fileProcess.getFileName()
-        let content:String = "battery level: \(battery_status.battery_level)%, battery state: \(battery_status.battery_state), time:\(cur_time)\n\n"
-        self.fileProcess.writeFile(content: content, fileName: file, folder:"record")
-        print (content)
+        
+        //screen orientation
+        let screenOri = getScreenRotation()
         
         //Wifi AP
         //WiFiManagerRef manager = WiFiManagerClientCreate(kCFAllocatorDefault, 0)
         
         //wifi connected ID
         let ssid = getSSID()
-        if ssid != nil {
-            let file = self.fileProcess.getFileName()
-            let cur_time = getDateHour()
-            let content:String = "wifi ssid: \(ssid), time:\(cur_time)\n\n"
-            self.fileProcess.writeFile(content: content, fileName: file, folder:"record")
-            print(ssid!)
+        
+        ////////////////////////
+        //writing to csv file///
+        ////////////////////////
+        let delayTime = DispatchTime.now()+2
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            self.stopRecording()
+            self.fileProcess.generateFileName(fileType: .csv)
+            var csvContent:String = ""
+            if let acc = self.motionData.getACCData() {
+                let accData = acc.acceleration
+                 csvContent = String(format: "%.2f", accData.x)+","+String(format: "%.2f", accData.y)+","+String(format: "%.2f", accData.z)+",,,,0.0,,"
+            } else {
+                csvContent = ",,,,,,0.0,"
+            }
+    //        print(csvContent)
+            if self.locations.count == 0 {
+                csvContent = csvContent+",,,"
+            } else {
+                let loc = self.locations[0]
+                csvContent = csvContent+"\(loc.coordinate.latitude)"+","+"\(loc.coordinate.longitude)"+","+"\(loc.altitude)"+","
+            }
+    //        print(csvContent)
+            csvContent = csvContent+",,,,,,0.0,0.0\n"
+            //ggy
+            csvContent = csvContent+"ggy,\n"
+    //        print(csvContent)
+            //ap
+            if ssid == nil {
+                csvContent = csvContent+"ap,,,,,\n"
+            } else {
+                let bssid = ssid!["BSSID"] as! String
+                let ssid = ssid!["SSID"] as! String
+                csvContent = csvContent+"ap,\(bssid),\(ssid),0,0.0.0.0,0.0\n"
+            }
+    //        print(csvContent)
+            //mac addr(apple not allowed), use uuid instead
+            let uuid = UIDevice.current.identifierForVendor
+            let userName = self.fileProcess.getUserName()
+            if uuid == nil {
+                csvContent = csvContent+"mac,,\(userName),i,"
+            } else {
+                csvContent = csvContent+"mac,\(uuid!.uuidString),\(userName),i,\n"
+            }
+    //        print(csvContent)
+            //battery
+            csvContent = csvContent+"bat,\(battery_status.battery_state),,,,,,,2,\(battery_status.battery_level),0,\(screenOri)"
+            print(csvContent)
+            let csvFileName = self.fileProcess.getFileName(fileType: .csv)
+            self.fileProcess.writeFile(content: csvContent, fileName: csvFileName, folder: "record")
+            
+            ///////////////////
+            //motion.csv file//
+            //////////////////
+            var motionContent:String = ""
+            self.fileProcess.generateFileName(fileType: .motion)
+            motionContent = motionContent+"L,\n"
+            motionContent = motionContent+"S,\n"
+            motionContent = motionContent+"O,\n"
+            motionContent = motionContent+"A,\n"
+            motionContent = motionContent+"Y,\n"
+            motionContent = motionContent+"G,\n"
+            print(motionContent)
+            let motionFileName = self.fileProcess.getFileName(fileType: .motion)
+            self.fileProcess.writeFile(content: motionContent, fileName: motionFileName, folder: "record")
         }
+        
     }
     
     func stopRecording() -> Void {
@@ -108,21 +167,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("get the location")
-        let file = self.fileProcess.getFileName()
-        for loc:CLLocation in locations {
-//            print("the longitute: \(loc.coordinate.longitude)")
-//            print("the latitude:\(loc.coordinate.latitude)")
-//            print("the altitude:\(loc.altitude)")
-            var record:String = "longitute: \(loc.coordinate.longitude)"
-            record += ", latitude: \(loc.coordinate.latitude)"
-            record += ", altitude: \(loc.altitude)"
-            record += ", time: \(loc.timestamp)"
-            record += "\n"
-//            print(record)
-            self.fileProcess.writeFile(content: record, fileName: file, folder:"record")
-        }
-//        print("location = \(locations)")
+        self.locations = locations
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -140,20 +185,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
         var battery_state:String = "unknown"
         switch status {
         case UIDeviceBatteryState.charging:
-            battery_state = "in charging"
+            battery_state = "2"
         case UIDeviceBatteryState.full:
-            battery_state = "full"
+            battery_state = "5"
         case UIDeviceBatteryState.unplugged:
-            battery_state = "unplugged"
+            battery_state = "3"
         default:
-            battery_state = "unknown"
+            battery_state = "0"
         }
         print ("the battery status:\(battery_state)")
         return (battery_level, battery_state)
     }
     
+    //get Screen rotation
+    func getScreenRotation() -> String {
+        var res = ""
+        switch UIDevice.current.orientation{
+        case .landscapeLeft:
+            res = "1"
+        case .landscapeRight:
+            res = "1"
+        default:
+            res = "2"
+        }
+        return res
+    }
+    
     //Current SSID
-    func getSSID() -> String? {
+    func getSSID() -> [String:AnyObject]? {
         print("get current wifi ssid")
         let interfaces = CNCopySupportedInterfaces()
         if interfaces == nil {
@@ -166,14 +225,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, SituationLabe
         }
         
         let interfaceName = interfacesArray[0] as String
-        let unsafeInterfaceData =     CNCopyCurrentNetworkInfo(interfaceName as CFString)
+        let unsafeInterfaceData = CNCopyCurrentNetworkInfo(interfaceName as CFString)
         if unsafeInterfaceData == nil {
             return nil
         }
-        
+        print(unsafeInterfaceData)
         let interfaceData = unsafeInterfaceData as! Dictionary <String,AnyObject>
-        
-        return interfaceData["SSID"] as? String
+        print(interfaceData)
+        return interfaceData
     }
     
     func getDateHour()-> String {

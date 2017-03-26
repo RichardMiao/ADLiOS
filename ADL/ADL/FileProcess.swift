@@ -8,8 +8,16 @@
 
 import Foundation
 
+enum FileType {
+    case audio
+    case csv
+    case motion
+    case other
+}
+
 class FileProcess {
     
+    var fileNames:[FileType:String?] = [:]
     func createFile(fileName:String, folder:String) -> Void {
         print("file creating:");
         let fileDir = try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(folder)
@@ -66,12 +74,48 @@ class FileProcess {
         }
     }
     
-    func getFileName() -> String {
+    func generateFileName(fileType:FileType) -> Void {
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
+        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
         let dateString = dateFormatter.string(from:date)
-        return dateString
+        let userName = getUserName()
+        var res:String = ""
+        if fileType == .audio {
+            res = userName+"_"+dateString+".m4a"
+        } else if fileType == .csv {
+            res = userName+"_"+dateString+".csv"
+        } else if fileType == .motion {
+            res = userName+"_"+dateString+"_motion.csv"
+        } else {
+            res = userName+"_"+dateString
+        }
+        self.fileNames[fileType] = res
+    }
+    
+    func getFileName(fileType:FileType) -> String {
+        if let fileName = self.fileNames[fileType] {
+            return fileName!
+        } else {
+            return ""
+        }
+    }
+    
+    
+    
+    func getUserName() -> String {
+        if !self.checkLoginFile() {
+            return ""
+        }
+        let fileContent = self.readFile(fileName: "user", folder: "login")
+        if fileContent == nil {
+            return ""
+        }
+        let userInfo = fileContent?.components(separatedBy: "\n")
+        if userInfo == nil {
+            return ""
+        }
+        return userInfo![0]
     }
     
     func getFileList(folder:String) -> Void {

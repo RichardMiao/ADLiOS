@@ -105,12 +105,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADL/ViewController.swift"
-            timestampString = "511733154.435605"
+            timestampString = "512245062.860932"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "locationManager(_:didFailWithError:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,12 +121,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ADL/FileProcess.swift"
-            timestampString = "511557207.988048"
+            timestampString = "512190982.068883"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "checkLoginFile()"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "getFileList(folder:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -143,6 +143,22 @@
             startingLineNumber = "27"
             endingLineNumber = "27"
             landmarkName = "setupRecorder(fileName:delegate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ADL/ViewController.swift"
+            timestampString = "511928710.125148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "mainButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
